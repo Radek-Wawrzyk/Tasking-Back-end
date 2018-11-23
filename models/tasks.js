@@ -13,7 +13,12 @@ const TasksSchema = new Schema({
   done: {
     type: Boolean,
     required: true
-  }
+  },
+  date: {
+    type: Date,
+    required: true
+  },
+  subTasks: []
 });
 
 const Tasks = mongoose.model('tasks', TasksSchema);
