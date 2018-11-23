@@ -1,18 +1,27 @@
 const express = require('express');
 const router = express.Router();
-const Test = require('../models/test');
+const Tasks = require('../models/tasks');
 
-router.get('/status', (req, res) => {
-  res.send({message: 'It works and I like it'});
-  console.log(req.body);
+//Tasks
+
+router.get('/tasks', async (req, res) => {
+  const tasks = await Tasks.find({});
+  res.send(tasks);
 });
 
-router.post('/status', (req, res) => {
-  res.send({message: 'It works and I like it'});
+router.post('/tasks', async (req, res) => {
+  const task = await Tasks.create(req.body);
+  res.send(task);
+});
 
-  Test.create(req.body).then(test => {
-    res.send(test);
-  });
+router.delete('/tasks/:id', async (req, res) => {
+  const task = await Tasks.findByIdAndRemove({_id: req.params.id});
+  res.send(task);
+});
+
+router.put('/tasks/:id', async (req, res) => {
+  const task = await Tasks.findByIdAndUpdate({_id: req.params.id}, req.body);
+  res.send(task);
 });
 
 module.exports = router;
