@@ -19,7 +19,9 @@
   },
   "homepage": "https://github.com/Radek-Wawrzyk/Tasking-Back-end#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
+    "mongoose": "^5.3.13",
     "nodemon": "^1.18.6"
   }
 }
