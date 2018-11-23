@@ -1,10 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongo = require('mongoose');
-
+const cors = require('cors')
 
 //Set Express app
 const app = express();
+
+//Set CORS settings
+app.use(cors());
 
 //Setup Mongoose DB
 mongo.connect('mongodb://localhost/tasking');
